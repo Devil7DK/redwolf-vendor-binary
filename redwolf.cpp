@@ -134,6 +134,7 @@ int main()
     cout << RED << "--------------------Finished making RedWolf---------------------" << NC << endl;
     cout << GREEN << "RedWolf image: ${OUT}/" << RW_OUT_NAME << ".img" << NC << endl;
     cout << GREEN << "          MD5: ${OUT}/" << RW_OUT_NAME << ".img.md5" << NC << endl;
+    cout << GREEN << "  RedWolf XML: ${OUT}/redwolf.xml" << NC << endl;
     cout << RED << "================================================================" << NC << endl;
 
     return 0;
