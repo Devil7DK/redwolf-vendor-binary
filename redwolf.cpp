@@ -115,7 +115,7 @@ int main()
 
 
     cout << BLUE << "-- Repacking and copying recovery" << NC << endl;
-    CMD = "bash " + RW_VENDOR +" /tools/mkboot " + RW_WORK + " " + OUT + "/" + RW_OUT_NAME + ".img > /dev/null 2>&1";
+    CMD = "bash " + RW_VENDOR +"/tools/mkboot " + RW_WORK + " " + OUT + "/" + RW_OUT_NAME + ".img > /dev/null 2>&1";
     system(CMD.c_str());
     CMD = "cd " + OUT + " && md5sum " + RW_OUT_NAME + ".img > " + RW_OUT_NAME + ".img.md5 && cd - > /dev/null 2>&1";
     system(CMD.c_str());
