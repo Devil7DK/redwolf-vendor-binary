@@ -134,7 +134,8 @@ int main()
     cout << RED << "--------------------Finished making RedWolf---------------------" << NC << endl;
     cout << GREEN << "RedWolf image: ${OUT}/" << RW_OUT_NAME << ".img" << NC << endl;
     cout << GREEN << "          MD5: ${OUT}/" << RW_OUT_NAME << ".img.md5" << NC << endl;
-    cout << GREEN << "  RedWolf XML: ${OUT}/redwolf.xml" << NC << endl;
+    if(TW_DEVICE_VERSION != ""){
+    cout << GREEN << "          XML: ${OUT}/redwolf.xml" << NC << endl;}
     cout << RED << "================================================================" << NC << endl;
 
     return 0;
@@ -193,7 +194,7 @@ string GetIncremental( string cfilename ) {
     ifstream fileInput;
     int offset;
     string line;
-    char* search = (char*)"ro.build.version.incremental";
+    char* search = (char*)"ro.bootimage.build.date.utc";
     fileInput.open(cfilename.c_str());
     if(fileInput.is_open()) {
         while(!fileInput.eof()) {
@@ -238,7 +239,7 @@ void SetAttribute( xmlNode *node, xmlDoc *doc, string deviceName, string buildNu
             if (!xmlStrcmp(cur->name, (const xmlChar *)"device")) {
                 devicename = (char *)xmlGetProp(cur,(const xmlChar *)"name");
                 if(strcmp(devicename,deviceName.c_str())==0) {
-                    xmlSetProp(cur,(const xmlChar *)"incremental",(const xmlChar *)buildNumber.c_str());
+                    xmlSetProp(cur,(const xmlChar *)"utc_build_date",(const xmlChar *)buildNumber.c_str());
                 }
             } else if(!xmlStrcmp(cur->name, (const xmlChar *)"devices")) {
                 SetAttribute(cur,doc,deviceName,buildNumber);
