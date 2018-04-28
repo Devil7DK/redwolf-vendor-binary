@@ -23,7 +23,7 @@ void SetAttribute( xmlNode*, xmlDoc*, string, string );
 int main()
 {
     string CMD;
-    string OUT,TARGET_ARCH,TW_DEVICE_VERSION,TARGET_PRODUCT,BUILD_NUMBER;
+    string OUT,TARGET_ARCH,TW_DEVICE_VERSION,RW_DEVICE_VERSION,TARGET_PRODUCT,BUILD_NUMBER;
     string RW_BUILD,RW_WORK,RW_DEVICE,RW_OUT_NAME,RW_XML_PATH;
 
     string RW_VENDOR = "vendor/redwolf";
@@ -80,13 +80,18 @@ int main()
 
     TARGET_ARCH = GetEnv("TARGET_ARCH");
     TW_DEVICE_VERSION = GetEnv("TW_DEVICE_VERSION");
+    RW_DEVICE_VERSION = GetEnv("RW_DEVICE_VERSION");
     OUT = GetEnv("OUT");
     TARGET_PRODUCT = GetEnv("TARGET_PRODUCT");
 
-    if(TW_DEVICE_VERSION == "") {
-        RW_BUILD = "Unofficial";
-    } else {
-        RW_BUILD = TW_DEVICE_VERSION;
+    if(RW_DEVICE_VERSION != ""){
+	RW_BUILD = RW_DEVICE_VERSION;
+    }else{
+        if(TW_DEVICE_VERSION == "") {
+            RW_BUILD = "Unofficial";
+        } else {
+            RW_BUILD = TW_DEVICE_VERSION;
+        }
     }
     RW_WORK = OUT + "/RW_AIK";
     RW_DEVICE = SplitString(TARGET_PRODUCT,"_",1);
