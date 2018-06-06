@@ -115,7 +115,11 @@ int main()
         cout << GREEN << "-- " + ToUpper(TARGET_ARCH) + " arch detected. Copying " + ToUpper(TARGET_ARCH) + " binaries" << NC << endl;
         CMD = "cp " + RW_VENDOR + "/prebuilt/" + TARGET_ARCH + "/mkbootimg " + RW_WORK + "/ramdisk/sbin";
         CMD = CMD + " && " + "cp " + RW_VENDOR + "/prebuilt/" + TARGET_ARCH + "/unpackbootimg " + RW_WORK + "/ramdisk/sbin";
+		CMD = CMD + " && " + "cp " + RW_VENDOR + "/prebuilt/" + TARGET_ARCH + "/apkname " + RW_WORK + "/ramdisk/sbin";
+		CMD = CMD + " && " + "cp " + RW_VENDOR + "/prebuilt/" + TARGET_ARCH + "/gnutar " + RW_WORK + "/ramdisk/sbin";
         CMD = CMD + " && " + "chmod a+x " + RW_WORK + "/ramdisk/sbin/*bootimg";
+		CMD = CMD + " && " + "chmod a+x " + RW_WORK + "/ramdisk/sbin/apkname";
+		CMD = CMD + " && " + "chmod a+x " + RW_WORK + "/ramdisk/sbin/gnutar";
         system(CMD.c_str());
     } else {
         cout << RED << "-- Couldn't detect current device architecture or it is not supported" << NC << endl;
