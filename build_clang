@@ -1,4 +1,0 @@
-rm -rf redwolf
-clang++ redwolf.cpp -o redwolftmp -lstdc++ -lxml2 -I/usr/include/libxml2 -static-libstdc++
-upx -9k redwolftmp -oredwolf
-rm redwolftmp
